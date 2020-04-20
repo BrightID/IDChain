@@ -39,11 +39,12 @@ type ChainContext interface {
 func NewEVMContext(msg Message, header *types.Header, chain ChainContext, author *common.Address) vm.Context {
 	// If we don't have an explicit author (i.e. not mining), extract from the header
 	var beneficiary common.Address
-	if author == nil {
-		beneficiary, _ = chain.Engine().Author(header) // Ignore error, we're past header validation
-	} else {
-		beneficiary = *author
-	}
+	beneficiary = common.HexToAddress("0x0000000000000000000000000000000000000000")
+	// if author == nil {
+	// 	beneficiary, _ = chain.Engine().Author(header) // Ignore error, we're past header validation
+	// } else {
+	// 	beneficiary = *author
+	// }
 	return vm.Context{
 		CanTransfer: CanTransfer,
 		Transfer:    Transfer,
