@@ -25,7 +25,7 @@ $ cd idchain
 $ wget http://idchain.brightid.org/files/idchain.json
 $ geth --datadir . init idchain.json
 # Setting static peers
-$ wget idchain.brightid.org/files/static-nodes.json
+$ wget http://idchain.brightid.org/files/static-nodes.json
 # Running the node
 $ geth --datadir . --networkid 74
 ```
