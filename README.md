@@ -15,7 +15,7 @@ $ make geth
 $ sudo ln -sf $PWD/build/bin/geth /usr/bin/geth
 ```
 
-#### Running the node
+### Running the node
 
 
 ```shell
