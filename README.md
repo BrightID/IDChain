@@ -1,10 +1,10 @@
-## Go Ethereum
+## Idchain
 
-Th Official Golang implementation of the Ethereum protocol with a small hack to burn gas fees instead of awarding them to the block sealers, to be able to use it for IDChain.
+Th Official Golang implementation of the Ethereum protocol with a small hack to burn gas fees instead of awarding them to the block sealers, to be able to use it for idchain.
 
-## Joining IDChain Network
+## Joining the Idchain Network
 
-### Building the source on Ubuntu
+### Building on Ubuntu
 
 ```shell
 $ sudo snap install go --classic
@@ -15,7 +15,7 @@ $ make geth
 $ sudo ln -sf $PWD/build/bin/geth /usr/bin/geth
 ```
 
-### Running the node
+### Running a Node
 
 
 ```shell
