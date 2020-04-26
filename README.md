@@ -17,8 +17,6 @@ $ sudo ln -sf $PWD/build/bin/geth /usr/bin/geth
 
 ### Running a Node
 
-The `node` folder will play as `datadir` for `geth` and can be anywhere, but it should not be inside `idchain` that we created and built `geth` in previous step.
-
 ```shell
 $ cd ~
 $ mkdir node
@@ -31,3 +29,5 @@ $ wget http://idchain.brightid.org/files/static-nodes.json
 # Running the node
 $ geth --datadir . --networkid 74
 ```
+
+_The `node` folder will play as `datadir` for `geth` and can be anywhere, but it should not be inside `idchain` that we created and built `geth` in previous step._
