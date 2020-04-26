@@ -24,8 +24,8 @@ $ cd ~
 $ mkdir node
 $ cd node
 # Initializing the node by genesis file
-$ wget http://idchain.brightid.org/files/idchain.json
-$ geth --datadir . init idchain.json
+$ wget http://idchain.brightid.org/files/idchain-genesis.json
+$ geth --datadir . init idchain-genesis.json
 # Setting static peers
 $ wget http://idchain.brightid.org/files/static-nodes.json
 # Running the node
