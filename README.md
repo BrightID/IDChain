@@ -9,8 +9,8 @@ Idchain is a fork of the [official Golang implementation of the Ethereum protoco
 ```shell
 $ sudo snap install go --classic
 $ sudo apt-get install -y build-essential
-$ git clone https://github.com/BrightID/go-ethereum.git
-$ cd go-ethereum
+$ git clone https://github.com/BrightID/idchain.git
+$ cd idchain
 $ make geth
 $ sudo ln -sf $PWD/build/bin/geth /usr/bin/geth
 ```
@@ -19,8 +19,8 @@ $ sudo ln -sf $PWD/build/bin/geth /usr/bin/geth
 
 
 ```shell
-$ mkdir idchain
-$ cd idchain
+$ mkdir node
+$ cd node
 # Initializing the node by genesis file
 $ wget http://idchain.brightid.org/files/idchain.json
 $ geth --datadir . init idchain.json
