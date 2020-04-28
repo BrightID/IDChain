@@ -51,9 +51,9 @@ After the proposal approved, the new validator address should be appeared in the
   inturnPercent: 66.6666,
   numBlocks: 64,
   sealerActivity: {
-    0xe40e3432d9b662b16b4115589c70bd40fdff31d3: 32,
-    0xe8fb09228d1373f931007ca7894a08344b80901c: 0,
-    0xfba8b8903045da22a6d21140c08342af801145e9: 32
+    VALIDATOR1_ADDRESS: 32,
+    VALIDATOR2_ADDRESS: 32,
+    NEW_VALIDATOR1_ADDRESS: 0
   }
 }
 ```
