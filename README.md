@@ -4,9 +4,8 @@ Idchain is a fork of the [official Golang implementation of the Ethereum protoco
 
 To have JSON-RPC access over https or websockets you can use these endpoints:
 
-https://idchain.brightid.org/rpc/
-
-wss://idchain.brightid.org/ws/
+- https://idchain.brightid.org/rpc/
+- wss://idchain.brightid.org/ws/
 
 ## Joining the Idchain Network
 
