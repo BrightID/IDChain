@@ -35,6 +35,7 @@ _The `node` folder will play as `datadir` for `geth` and can be anywhere, but it
 
 ### Adding a Validator
 
+#### Proposing New Validator to Network
 To join the network as validator, half of the current validators should [use clique api to propose the new validator](https://geth.ethereum.org/docs/rpc/ns-clique#clique_propose) to the network.
 
 ```shell
@@ -57,7 +58,8 @@ After the proposal approved, the new validator address should be appeared in the
   }
 }
 ```
-Then, the new validator should import the private key of that address into geth and run the node in mining mode.
+#### Joining the Network as Validator
+To join the network as validator, the new validator should import the private key of the address proposed to network in previous step into geth and run the node in mining mode.
 
 ```shell
 $ cd ~
@@ -81,3 +83,14 @@ $ echo "YOUR PASSPHRASE" > password.txt
 $ geth --datadir . --syncmode full --port 30329 --networkid 74 --gasprice 1 --unlock "YOUR ADDRESS" --password password.txt --mine --allow-insecure-unlock
 ```
 _You can remove the password.txt and key.priv files after running the `geth`._
+
+#### Adding the New Validator Address to Static Peers List
+It's a good practice to add `enode` address for all validators to `static-nodes.json` file hosted on `http://idchain.brightid.org/files/static-nodes.json` to enable decentralized access to all peers for everyone that want to join the network.
+The new validator can find its node id by:
+```shell
+$ cd ~/node
+$ bootnode -nodekey ./geth/nodekey -writeaddress
+```
+- The format for `enode` address that should be added to `static-nodes.json` is `enode://NODE_ID@ip:port`.
+- The standard port for idchain validators will be 30329.
+- The new validator should configure the firewall on its server to open port 30329 to enable others to connect its node.
