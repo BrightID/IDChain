@@ -16,8 +16,9 @@ $ sudo snap install go --classic
 $ sudo apt-get install -y build-essential
 $ git clone https://github.com/BrightID/idchain.git
 $ cd idchain
-$ make geth
-$ sudo ln -sf $PWD/build/bin/geth /usr/bin/geth
+$ make all
+$ echo "export PATH=$PATH:$PWD/build/bin" >> ~/.profile
+$ source ~/.profile
 ```
 
 ### Running a Node
