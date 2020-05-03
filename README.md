@@ -20,6 +20,7 @@ $ make all
 $ echo "export PATH=$PATH:$PWD/build/bin" >> ~/.profile
 $ source ~/.profile
 ```
+_The above routine tested with go1.14.2 installed by snap. If you have older version of go (you can check by `go version`), first remove that using `sudo rm /usr/bin/go` and then use `snap` as described to install latest version of go._
 
 ### Running a Node
 
