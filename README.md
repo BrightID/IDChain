@@ -9,3 +9,4 @@ Idchain is a fork of the [official Golang implementation of the Ethereum protoco
 - The `network id (chainId)` for idchain is `74`
 - To connect your metamask to idchain follow [this guide](https://github.com/BrightID/idchain/wiki/Connect-Metamask-to-Idchain)
 - To find out how to run a node and join the idchain network follow [this guide](https://github.com/BrightID/idchain/wiki/Joining-the-Idchain-Network)
+- Latest idchain network operators are listed [here](https://docs.google.com/spreadsheets/d/1OR1xh35CJvPnhHjwgvPXGg3w-LhB1KnpXbCn1-4aTYY/edit?usp=sharing)
