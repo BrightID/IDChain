@@ -1,0 +1,17 @@
+[Unit]
+Description=idChain Node
+After=network.target auditd.service
+Wants=network.target
+[Service]
+WorkingDirectory=/home/geth/node
+#ExecStart=/home/geth/bin/geth --networkid 74
+#ExecStart=/home/geth/bin/geth --syncmode full --port 30329 --networkid 74 --gasprice 1 --unlock 0x22e9c419d578b2ec3f6d1953e8ac0e8d85cdc716 --password password.txt --nodiscover
+ExecStart=/home/geth/bin/geth --syncmode full --port 30329 --networkid 74 --gasprice 1 --unlock 0x22e9c419d578b2ec3f6d1953e8ac0e8d85cdc716 --password password.txt --nat extip:136.244.82.249 --nodiscover --mine
+User=geth
+Group=geth
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
+Alias=idchain.service
