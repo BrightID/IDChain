@@ -1,0 +1,24 @@
+[Unit]
+Description=idChain Node
+After=network.target auditd.service
+Wants=network.target
+[Service]
+WorkingDirectory=/path/to/datadir
+
+# Use this to join the idchain network as general node
+#ExecStart=/path/to/idchain/build/bin/geth --datadir /path/to/datadir --networkid 74
+
+# Use this to join the idchain network as validator
+# Replace VALIDATOR_ADDRESS with the address of validator
+# Replace EXTERNAL_IP with the external ip of validator
+ExecStart=/path/to/idchain/build/bin/geth --datadir /path/to/datadir --syncmode full --port 30329 --networkid 74 --gasprice 1 --unlock VALIDATOR_ADDRESS --password password.txt --nat extip:EXTERNAL_IP --nodiscover --mine
+
+# Replace USER and GROUP with the user and group the service should run with
+User=USER
+Group=GROUP
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
+Alias=idchain.service
