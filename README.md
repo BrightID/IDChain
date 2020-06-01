@@ -8,6 +8,7 @@ IDChain is a fork of the [official Golang implementation of the Ethereum protoco
   - wss://idchain.one/ws/
 - The `network id (chainId)` for IDChain is `74`
 - The gas price for IDChain network is `10 gwei`
+- To claim your personal supply of IDChain native tokens follow [https://idchain.one/begin/]
 - To connect your metamask to IDChain follow [this guide](https://github.com/BrightID/IDChain/wiki/Connect-Metamask-to-IDChain)
 - To find out how to run a node and join the IDChain network follow [this guide](https://github.com/BrightID/IDChain/wiki/Joining-the-IDChain-Network)
 - Latest IDChain network operators are listed [here](https://docs.google.com/spreadsheets/d/1OR1xh35CJvPnhHjwgvPXGg3w-LhB1KnpXbCn1-4aTYY/edit?usp=sharing)
