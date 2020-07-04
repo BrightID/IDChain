@@ -11,5 +11,7 @@ IDChain is a fork of the [official Golang implementation of the Ethereum protoco
 - To claim your personal supply of IDChain native tokens follow visit https://idchain.one/begin/
 - To connect your metamask to IDChain follow [this guide](https://github.com/BrightID/IDChain/wiki/Connect-Metamask-to-IDChain)
 - To find out how to run a node and join the IDChain network follow [this guide](https://github.com/BrightID/IDChain/wiki/Joining-the-IDChain-Network)
-- For DAppNode users there is also a [DAppNode package](https://github.com/BrightID/DAppNodePackage-IDChain) available for easy installation.
+- For DAppNode users there is also a [DAppNode](https://dappnode.io/) package available for easy installation:
+  - Direct installation: http://my.dappnode/#/installer/idchain.public.dappnode.eth
+  - DappNode Package repo: https://github.com/BrightID/DAppNodePackage-IDChain
 - Latest IDChain network operators are listed [here](https://docs.google.com/spreadsheets/d/1OR1xh35CJvPnhHjwgvPXGg3w-LhB1KnpXbCn1-4aTYY/edit?usp=sharing)
