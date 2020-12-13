@@ -13,6 +13,7 @@ SERVICE_NAME = "idchain"
 
 def main():
     last_seen_block = 0
+    print('Start watching IDChain...')
     while True:
         time.sleep(CHECK_INTERVAL)
         block_number = execute("eth_blockNumber", [])
