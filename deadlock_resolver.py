@@ -4,7 +4,7 @@ import json
 import random
 import urllib3
 
-REWIND_AFTER = 30
+REWIND_AFTER = 60
 CHECK_INTERVAL = 5
 RANDOM_WAITING_TIME = 60
 RPC_URL = "http://127.0.0.1:8545/"
