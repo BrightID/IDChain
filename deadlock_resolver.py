@@ -12,16 +12,17 @@ SERVICE_NAME = "idchain"
 
 
 def main():
-    last_seen_block = 0
     print('Start watching IDChain...')
-    while True:
-        # rewind if there is a reset.it
-        if os.path.exists('./reset.it'):
-            print('testing rewind...')
-            block_number = execute("eth_blockNumber", [])
-            rewind(int(block_number, 16))
-            os.remove('./reset.it')
+    last_seen_block = 0
 
+    # rewind if there is /tmp/reset.it file
+    if os.path.exists(os.path.exists('/tmp/reset.it')):
+        block_number = execute("eth_blockNumber", [])
+        print(f'test rewind...\ncurent block: {int(block_number, 16)}')
+        rewind(int(block_number, 16))
+        os.remove('/tmp/reset.it')
+
+    while True:
         time.sleep(CHECK_INTERVAL)
         block_number = execute("eth_blockNumber", [])
         block = execute("eth_getBlockByNumber", [block_number, True])
@@ -51,7 +52,7 @@ def rewind(last_seen_block):
     target = last_seen_block - (len(signers) // 2 + 1)
     execute("debug_setHead", [hex(target)])
     os.system(f"systemctl restart {SERVICE_NAME}")
-    print(f'rewinding to {target}!')
+    print(f'rewinding to {target}!\n')
 
 
 def execute(cmd, params):
