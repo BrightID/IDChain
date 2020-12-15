@@ -6,7 +6,7 @@ import urllib3
 
 REWIND_AFTER = 60
 CHECK_INTERVAL = 5
-RANDOM_WAITING_TIME = 60
+RANDOM_WAITING_TIME = 30
 RPC_URL = "http://127.0.0.1:8545/"
 SERVICE_NAME = "idchain"
 
@@ -15,6 +15,13 @@ def main():
     last_seen_block = 0
     print('Start watching IDChain...')
     while True:
+        # rewind if there is a reset.it
+        if os.path.exists('./reset.it'):
+            print('testing rewind...')
+            block_number = execute("eth_blockNumber", [])
+            rewind(int(block_number, 16))
+            os.remove('./reset.it')
+
         time.sleep(CHECK_INTERVAL)
         block_number = execute("eth_blockNumber", [])
         block = execute("eth_getBlockByNumber", [block_number, True])
@@ -35,13 +42,16 @@ def main():
         if time.time() - int(block['timestamp'], 16) < REWIND_AFTER:
             print('deadlock seems to be resolved by others')
             continue
+        rewind(last_seen_block)
 
-        # set rewind target based on number of signers
-        signers = execute("clique_getSigners", [])
-        target = last_seen_block - (len(signers) // 2 + 1)
-        execute("debug_setHead", [hex(target)])
-        os.system(f"systemctl restart {SERVICE_NAME}")
-        print(f'rewinding to {target}!')
+
+def rewind(last_seen_block):
+    # set rewind target based on number of signers
+    signers = execute("clique_getSigners", [])
+    target = last_seen_block - (len(signers) // 2 + 1)
+    execute("debug_setHead", [hex(target)])
+    os.system(f"systemctl restart {SERVICE_NAME}")
+    print(f'rewinding to {target}!')
 
 
 def execute(cmd, params):
@@ -54,6 +64,7 @@ def execute(cmd, params):
     except Exception as e:
         # if node is not started after restart yet
         time.sleep(CHECK_INTERVAL)
+        print(f'Error: {e}')
         return execute(cmd, params)
     return json.loads(resp.data)['result']
 
