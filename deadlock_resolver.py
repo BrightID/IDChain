@@ -14,16 +14,19 @@ SERVICE_NAME = "idchain"
 def main():
     print('Start watching IDChain...')
     last_seen_block = 0
-
-    # rewind if there is /tmp/reset.it file
-    if os.path.exists(os.path.exists('/tmp/reset.it')):
-        block_number = execute("eth_blockNumber", [])
-        print(f'test rewind...\ncurent block: {int(block_number, 16)}')
-        rewind(int(block_number, 16))
-        os.remove('/tmp/reset.it')
+    test_file = os.path.join(os.path.dirname(
+        os.path.realpath(__file__)), 'reset.it')
 
     while True:
         time.sleep(CHECK_INTERVAL)
+
+        # rewind if there is ./reset.it file
+        if os.path.exists(test_file):
+            block_number = execute("eth_blockNumber", [])
+            print(f'test rewind...\ncurent block: {int(block_number, 16)}')
+            rewind(int(block_number, 16))
+            os.remove(test_file)
+
         block_number = execute("eth_blockNumber", [])
         block = execute("eth_getBlockByNumber", [block_number, True])
         last_seen_block = max(int(block['number'], 16), last_seen_block)
@@ -53,6 +56,7 @@ def rewind(last_seen_block):
     execute("debug_setHead", [hex(target)])
     os.system(f"systemctl restart {SERVICE_NAME}")
     print(f'rewinding to {target}!\n')
+    time.sleep(CHECK_INTERVAL * 2)
 
 
 def execute(cmd, params):
@@ -64,7 +68,7 @@ def execute(cmd, params):
         resp = http.request("POST", RPC_URL, body=payload, headers=headers)
     except Exception as e:
         # if node is not started after restart yet
-        time.sleep(CHECK_INTERVAL)
+        time.sleep(CHECK_INTERVAL * 2)
         print(f'Error: {e}')
         return execute(cmd, params)
     return json.loads(resp.data)['result']
