@@ -7,7 +7,7 @@ import urllib3
 REWIND_AFTER = 30
 CHECK_INTERVAL = 5
 RANDOM_WAITING_TIME = 10
-RPC_URL = "http://127.0.0.1:8505/"
+RPC_URL = "http://127.0.0.1:8545/"
 
 
 def main():
