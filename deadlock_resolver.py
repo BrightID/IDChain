@@ -4,11 +4,10 @@ import json
 import random
 import urllib3
 
-REWIND_AFTER = 60
+REWIND_AFTER = 30
 CHECK_INTERVAL = 5
-RANDOM_WAITING_TIME = 30
-RPC_URL = "http://127.0.0.1:8545/"
-SERVICE_NAME = "idchain"
+RANDOM_WAITING_TIME = 10
+RPC_URL = "http://127.0.0.1:8505/"
 
 
 def main():
@@ -53,8 +52,9 @@ def rewind(last_seen_block):
     # set rewind target based on number of signers
     signers = execute("clique_getSigners", [])
     target = last_seen_block - (len(signers) // 2 + 1)
+    execute("miner_stop", [])
     execute("debug_setHead", [hex(target)])
-    os.system(f"systemctl restart {SERVICE_NAME}")
+    execute("miner_start", [])
     print(f'rewinding to {target}!\n')
     time.sleep(CHECK_INTERVAL * 2)
 
